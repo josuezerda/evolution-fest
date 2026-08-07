@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution Fest - Invitación</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+    <div id="video-container"></div>
+    
+    <!-- Intro Screen -->
+    <section id="intro-screen">
+        <div class="intro-bg"></div>
+        <div class="intro-content">
+            <h1 class="title">Evolution Fest</h1>
+            <div class="intro-details">
+                <p class="date">06.11.2026 <span>•</span> 23:45</p>
+                <p class="location">en Monte Carmelo</p>
+                <a href="https://maps.app.goo.gl/xE1uGFw4AKjdAEM48" target="_blank" class="maps-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Ver Ubicación
+                </a>
+            </div>
+            <button id="open-btn" class="primary-btn">Abrir Invitación</button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-screen" class="hidden">
+        <section class="hero-section">
+            <div class="vip-logo-container">
+                <span class="vip-text">VI<span class="vip-p">P</span></span><span class="vip-name">ía Díaz Gómez</span>
+            </div>
+
+            <h1 class="main-title">Evolution Fest</h1>
+            
+            <div class="countdown-container">
+                <h2>Faltan</h2>
+                <div id="countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <p>Días</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="evolution-section">
+            <h3 class="evolution-title">La Evolución de la Fiesta</h3>
+            <div class="evolution-bar">
+                <img src="Fotos/evolution.jpg" alt="Evolución de la Fiesta" class="evolution-graphic-small">
+            </div>
+        </section>
+
+        <section class="details-section">
+            <div class="detail-card">
+                <h3>Dress Code</h3>
+                <p class="dress-code">Elegante Sport</p>
+                <p class="dress-code-sub">Preparate para brillar con un estilo único y cómodo.</p>
+            </div>
+            
+            <div class="detail-card">
+                <h3>Lugar y Fecha</h3>
+                <p class="info-text">Monte Carmelo</p>
+                <p class="info-text">6 de Noviembre, 2026 - 23:45 HS</p>
+                <a href="https://maps.app.goo.gl/xE1uGFw4AKjdAEM48" target="_blank" class="maps-link dark">
+                    ¿Cómo llegar?
+                </a>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Momentos</h2>
+            <div class="gallery">
+                <img src="Fotos/2026-08-04 Pia - Estudio 014.jpg" alt="Moment 1" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 042.jpg" alt="Moment 2" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 044.jpg" alt="Moment 3" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 046.jpg" alt="Moment 4" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 050.jpg" alt="Moment 5" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 057.jpg" alt="Moment 6" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 061.jpg" alt="Moment 7" loading="lazy">
+                <img src="Fotos/2026-08-04 Pia - Estudio 012.jpg" alt="Moment 8" loading="lazy">
+            </div>
+        </section>
+        
+        <footer>
+            <p>Te esperamos para vivir una noche inolvidable.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
