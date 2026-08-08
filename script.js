@@ -1,12 +1,26 @@
+// YouTube Player Variable
+let ytPlayer;
+
+window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('video-container', {
+        height: '0',
+        width: '0',
+        videoId: '4NRXx6U8ABQ',
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'loop': 1,
+            'playlist': '4NRXx6U8ABQ',
+            'playsinline': 1
+        }
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Elements
     const openBtn = document.getElementById('open-btn');
     const introScreen = document.getElementById('intro-screen');
     const mainScreen = document.getElementById('main-screen');
-    const videoContainer = document.getElementById('video-container');
-
-    // YouTube Video ID
-    const videoId = '4NRXx6U8ABQ'; 
 
     // Handle Open Invitation
     openBtn.addEventListener('click', () => {
@@ -17,14 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Show Main Screen
         mainScreen.classList.remove('hidden');
         
-        // 3. Play Music (Inject Iframe)
-        // Note: Autoplay works here because it's triggered by a user gesture (click)
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&autohide=1`;
-        iframe.allow = 'autoplay; encrypted-media';
-        iframe.style.display = 'none';
-        iframe.title = 'Background Music';
-        videoContainer.appendChild(iframe);
+        // 3. Play Music using YouTube API
+        if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+            ytPlayer.playVideo();
+        }
         
         // Remove intro screen from DOM after transition
         setTimeout(() => {
@@ -166,5 +176,34 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(updateAirplane, 100);
         // Update periodically (e.g. once an hour)
         setInterval(updateAirplane, 1000 * 60 * 60);
+    }
+    
+    // --- Lightbox Logic ---
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightbox) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.src;
+                lightbox.classList.add('show');
+            });
+        });
+
+        // Close when clicking the X
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('show');
+            setTimeout(() => { lightboxImg.src = ''; }, 300); // clear after fade out
+        });
+
+        // Close when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('show');
+                setTimeout(() => { lightboxImg.src = ''; }, 300);
+            }
+        });
     }
 });
