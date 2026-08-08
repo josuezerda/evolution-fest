@@ -130,4 +130,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     animateParticles();
+
+    // --- Flight Tracker Logic ---
+    const flightPath = document.getElementById('flight-path');
+    const airplane = document.getElementById('airplane');
+    
+    if (flightPath && airplane) {
+        // Start date: August 1, 2026. (Month is 0-indexed, so 7 is August)
+        const startDate = new Date(2026, 7, 1).getTime();
+        
+        function updateAirplane() {
+            const now = new Date().getTime();
+            const totalDuration = targetDate - startDate;
+            const elapsed = now - startDate;
+            let progress = elapsed / totalDuration;
+            
+            // Clamp between 0 and 1
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
+            
+            // Get coordinate along the SVG path
+            const pathLength = flightPath.getTotalLength();
+            const point = flightPath.getPointAtLength(progress * pathLength);
+            
+            // Map the viewBox coordinate (400x100) to percentages for CSS
+            const xPct = (point.x / 400) * 100;
+            const yPct = (point.y / 100) * 100;
+            
+            airplane.style.left = `${xPct}%`;
+            airplane.style.top = `${yPct}%`;
+        }
+        
+        // Initial positioning
+        // We use setTimeout to ensure SVG is fully rendered and getTotalLength works
+        setTimeout(updateAirplane, 100);
+        // Update periodically (e.g. once an hour)
+        setInterval(updateAirplane, 1000 * 60 * 60);
+    }
 });
