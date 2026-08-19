@@ -303,6 +303,19 @@ h1, h2, h3, .title, .main-title {
     75%, 100% { clip-path: inset(0 0 0 0); }
 }
 
+.dni-alert {
+    margin-top: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.dni-alert strong {
+    color: var(--primary-color);
+}
+
 /* Countdown */
 .countdown-container {
     background: var(--surface-color);
